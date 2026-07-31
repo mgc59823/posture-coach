@@ -2,7 +2,7 @@
  * MediaPipeManager.js
  * Manages MediaPipe Pose detection & design.md neon canvas drawing overlay.
  */
-export class MediaPipeManager {
+class MediaPipeManager {
   constructor(videoElement, canvasElement, onResultsCallback) {
     this.video = videoElement;
     this.canvas = canvasElement;
@@ -16,7 +16,7 @@ export class MediaPipeManager {
 
   async init() {
     if (typeof window.Pose === 'undefined') {
-      throw new Error('MediaPipe Pose library is not loaded. Check CDN script tags.');
+      throw new Error('MediaPipe Pose 라이브러리가 로드되지 않았습니다.');
     }
 
     this.pose = new window.Pose({
@@ -58,7 +58,6 @@ export class MediaPipeManager {
       });
       await this.camera.start();
     } else {
-      // Fallback if camera_utils is unavailable
       this.startManualLoop();
     }
   }
@@ -92,11 +91,7 @@ export class MediaPipeManager {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
-  /**
-   * Draws custom design.md neon overlays on canvas
-   */
   drawResults(results) {
-    // Match canvas internal resolution to video source
     if (this.video.videoWidth && this.video.videoHeight) {
       if (this.canvas.width !== this.video.videoWidth) {
         this.canvas.width = this.video.videoWidth;
@@ -109,8 +104,6 @@ export class MediaPipeManager {
 
     this.ctx.save();
     this.ctx.clearRect(0, 0, w, h);
-
-    // Draw video frame on canvas if video is playing
     this.ctx.drawImage(results.image, 0, 0, w, h);
 
     if (results.poseLandmarks && results.poseLandmarks.length > 12) {
@@ -127,13 +120,12 @@ export class MediaPipeManager {
       const ear = rightVis > leftVis ? rightEar : leftEar;
       const shoulder = rightVis > leftVis ? rightShoulder : leftShoulder;
 
-      if (ear && shoulder && (ear.visibility || 1) > 0.4 && (shoulder.visibility || 1) > 0.4) {
+      if (ear && shoulder && (ear.visibility || 1) > 0.3 && (shoulder.visibility || 1) > 0.3) {
         const earX = ear.x * w;
         const earY = ear.y * h;
         const shoulderX = shoulder.x * w;
         const shoulderY = shoulder.y * h;
 
-        // Calculate current posture angle for line color
         const dx = Math.abs(ear.x - shoulder.x);
         const dy = shoulder.y - ear.y;
         const angleDeg = Math.round(Math.atan2(dx, Math.max(dy, 0.001)) * (180 / Math.PI));
@@ -142,7 +134,6 @@ export class MediaPipeManager {
         const lineColor = isWarning ? '#EF4444' : '#22C55E';
         const lineGlow = isWarning ? 'rgba(239, 68, 68, 0.8)' : 'rgba(34, 197, 94, 0.8)';
 
-        // 1. Draw Ear-Shoulder Dashed Guide Line
         this.ctx.beginPath();
         this.ctx.setLineDash([8, 6]);
         this.ctx.lineWidth = 4;
@@ -153,12 +144,9 @@ export class MediaPipeManager {
         this.ctx.lineTo(shoulderX, shoulderY);
         this.ctx.stroke();
         this.ctx.shadowBlur = 0;
-        this.ctx.setLineDash([]); // Reset line dash
+        this.ctx.setLineDash([]);
 
-        // 2. Draw Cyan Ear Pinpoint Ring (#06B6D4)
         this.drawNeonPoint(earX, earY, '#06B6D4', 'rgba(6, 182, 212, 0.9)', 8);
-
-        // 3. Draw Purple Shoulder Pinpoint Ring (#A855F7)
         this.drawNeonPoint(shoulderX, shoulderY, '#A855F7', 'rgba(168, 85, 247, 0.9)', 8);
       }
     }
@@ -175,7 +163,6 @@ export class MediaPipeManager {
     this.ctx.shadowBlur = 15;
     this.ctx.fill();
     
-    // Outer Ring
     this.ctx.beginPath();
     this.ctx.arc(x, y, radius + 4, 0, 2 * Math.PI);
     this.ctx.strokeStyle = '#FFFFFF';

@@ -2,7 +2,7 @@
  * StatusComponent.js
  * Displays posture status badge (Good / Warning / Analyzing / Inactive) with LED-sync colors.
  */
-export class StatusComponent {
+class StatusComponent {
   constructor(containerId) {
     this.container = document.getElementById(containerId);
     this.currentStatus = 'inactive';

@@ -2,7 +2,7 @@
  * SliderComponent.js
  * Custom range slider for adjusting turtle neck detection sensitivity threshold angle.
  */
-export class SliderComponent {
+class SliderComponent {
   constructor(containerId, initialValue = 15, onChangeCallback) {
     this.container = document.getElementById(containerId);
     this.value = initialValue;

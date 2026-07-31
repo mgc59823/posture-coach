@@ -2,7 +2,7 @@
  * AlertModalComponent.js
  * Controls 3-second turtle neck fullscreen pulse border & slide-down alert modal.
  */
-export class AlertModalComponent {
+class AlertModalComponent {
   constructor(containerId) {
     this.container = document.getElementById(containerId);
     this.isVisible = false;

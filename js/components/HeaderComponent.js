@@ -2,7 +2,7 @@
  * HeaderComponent.js
  * Renders top header branding logo and Web Serial summary status indicator.
  */
-export class HeaderComponent {
+class HeaderComponent {
   constructor(containerId) {
     this.container = document.getElementById(containerId);
     this.render();

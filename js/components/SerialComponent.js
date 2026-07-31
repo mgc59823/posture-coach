@@ -2,7 +2,7 @@
  * SerialComponent.js
  * Controls Arduino Web Serial API connection and displays serial status & logs.
  */
-export class SerialComponent {
+class SerialComponent {
   constructor(containerId, onConnectCallback, onDisconnectCallback) {
     this.container = document.getElementById(containerId);
     this.onConnect = onConnectCallback;

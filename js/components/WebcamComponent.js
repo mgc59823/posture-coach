@@ -2,7 +2,7 @@
  * WebcamComponent.js
  * Manages 16:9 webcam stream & MediaPipe pose canvas overlay rendering.
  */
-export class WebcamComponent {
+class WebcamComponent {
   constructor(containerId, onStartCallback, onStopCallback) {
     this.container = document.getElementById(containerId);
     this.onStart = onStartCallback;
