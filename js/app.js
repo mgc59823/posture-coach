@@ -2,24 +2,29 @@
  * app.js
  * Main Entry Controller for Posture Coach Web (Step 1: Main UI Layout)
  */
-import { HeaderComponent } from './components/HeaderComponent.js';
-import { WebcamComponent } from './components/WebcamComponent.js';
-import { StatusComponent } from './components/StatusComponent.js';
-import { SliderComponent } from './components/SliderComponent.js';
-import { SerialComponent } from './components/SerialComponent.js';
-import { AlertModalComponent } from './components/AlertModalComponent.js';
-
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Initialize UI Components
-  const headerComp = new HeaderComponent('header-container');
-  const statusComp = new StatusComponent('status-container');
-  const alertModalComp = new AlertModalComponent('alert-modal-container');
+  const HeaderComp = window.HeaderComponent;
+  const WebcamComp = window.WebcamComponent;
+  const StatusComp = window.StatusComponent;
+  const SliderComp = window.SliderComponent;
+  const SerialComp = window.SerialComponent;
+  const AlertModalComp = window.AlertModalComponent;
 
-  const sliderComp = new SliderComponent('slider-container', 15, (newThreshold) => {
+  if (!HeaderComp || !WebcamComp || !StatusComp || !SliderComp || !SerialComp || !AlertModalComp) {
+    console.error('컴포넌트 로드에 실패했습니다.');
+    return;
+  }
+
+  // 1. Initialize UI Components
+  const headerComp = new HeaderComp('header-container');
+  const statusComp = new StatusComp('status-container');
+  const alertModalComp = new AlertModalComp('alert-modal-container');
+
+  const sliderComp = new SliderComp('slider-container', 15, (newThreshold) => {
     console.log('[Step 1 UI Event] 임계 각도 변경:', newThreshold);
   });
 
-  const webcamComp = new WebcamComponent(
+  const webcamComp = new WebcamComp(
     'webcam-container',
     () => {
       // Step 1: UI Toggle Test for Camera Start
@@ -36,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   );
 
-  const serialComp = new SerialComponent(
+  const serialComp = new SerialComp(
     'serial-container',
     () => {
       // Step 1: UI Toggle Test for Serial Connect

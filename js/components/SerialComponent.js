@@ -53,3 +53,7 @@ export class SerialComponent {
     }
   }
 }
+
+if (typeof window !== 'undefined') {
+  window.SerialComponent = SerialComponent;
+}

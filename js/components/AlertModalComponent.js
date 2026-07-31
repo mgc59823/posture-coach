@@ -34,3 +34,7 @@ export class AlertModalComponent {
     this.isVisible = false;
   }
 }
+
+if (typeof window !== 'undefined') {
+  window.AlertModalComponent = AlertModalComponent;
+}

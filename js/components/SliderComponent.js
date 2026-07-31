@@ -47,3 +47,7 @@ export class SliderComponent {
     return this.value;
   }
 }
+
+if (typeof window !== 'undefined') {
+  window.SliderComponent = SliderComponent;
+}

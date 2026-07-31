@@ -79,3 +79,7 @@ export class WebcamComponent {
     this.canvasCtx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
   }
 }
+
+if (typeof window !== 'undefined') {
+  window.WebcamComponent = WebcamComponent;
+}

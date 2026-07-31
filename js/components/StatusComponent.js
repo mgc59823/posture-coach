@@ -56,3 +56,7 @@ export class StatusComponent {
     }
   }
 }
+
+if (typeof window !== 'undefined') {
+  window.StatusComponent = StatusComponent;
+}
