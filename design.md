@@ -208,5 +208,28 @@
 ```
 
 ---
+
+## 9. 예상 UI 시각화 목업 (UI Mockups Showcase)
+
+`design.md`에 정의된 **Neo-Glass Dark Posture Dashboard** 디자인 가이드를 기반으로 생성된 예상 UI 화면입니다.
+
+### 9.1 바른 자세 감지 화면 (Good Posture UI)
+![바른 자세 감지 메인 UI 목업](/Users/Min/.gemini/antigravity-ide/brain/48ffbaf2-bdf1-46c5-affc-6c60e61d3b54/posture_coach_ui_mockup_1785472869304.png)
+* **특징**:
+  * 16:9 웹캠 뷰어 상에 사이언/퍼플 네온 랜드마크 핀포인트 및 초록색 네온 점선 가이드 수치 오버레이 (`Angle: 14°`)
+  * 대형 초록색 네온 글로우 바른 자세 상태 뱃지 (`🟢 Good Posture`)
+  * 민감도 조절 슬라이더 및 아두이노 연결 완료 상태 표시 (`⚡ Connected`)
+
+---
+
+### 9.2 거북목 경고 감지 화면 (Turtle Neck Warning UI)
+![거북목 경고 및 알림 UI 목업](/Users/Min/.gemini/antigravity-ide/brain/48ffbaf2-bdf1-46c5-affc-6c60e61d3b54/posture_coach_ui_warning_mockup_1785472881832.png)
+* **특징**:
+  * 거북목 감지 시 붉은색 네온 점선 가이드 연출 (`Angle: 24°`)
+  * 대형 빨간색 네온 글로우 거북목 주의 뱃지 (`🔴 Turtle Neck Warning`)
+  * 3초 이상 지속 감지 시 뷰포트 전면 붉은색 Pulse 맥박 테두리 및 상단 미끄러짐 경고 모달 팝업 발동
+
+---
 *작성일: 2026년 7월 31일*  
 *작성자: UI/UX 디자인 전문가 (Frontend & IoT Experience)*
+
