@@ -1,0 +1,87 @@
+/* ==========================================
+   Posture Coach - CSS Design Tokens
+   Theme: Neo-Glass Dark Posture Dashboard
+   ========================================== */
+
+:root {
+  /* Color Palette - Main & Background */
+  --bg-main: #0F172A;
+  --bg-card: rgba(30, 41, 59, 0.75);
+  --bg-card-hover: rgba(30, 41, 59, 0.85);
+  --border-glass: rgba(255, 255, 255, 0.1);
+  --border-glass-bright: rgba(255, 255, 255, 0.2);
+  
+  /* Typography Colors */
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  
+  /* Status & Hardware NeoPixel LED Sync Colors */
+  --status-good: #22C55E;
+  --status-good-glow: rgba(34, 197, 94, 0.4);
+  --status-good-bg: rgba(34, 197, 94, 0.15);
+  
+  --status-warning: #EF4444;
+  --status-warning-glow: rgba(239, 68, 68, 0.5);
+  --status-warning-bg: rgba(239, 68, 68, 0.18);
+  
+  --status-analyzing: #F59E0B;
+  --status-analyzing-glow: rgba(245, 158, 11, 0.4);
+  --status-analyzing-bg: rgba(245, 158, 11, 0.15);
+  
+  --status-inactive: #64748B;
+  --status-inactive-bg: rgba(100, 116, 139, 0.15);
+  
+  /* Accent & Interface Highlights */
+  --accent-cyan: #06B6D4;
+  --accent-cyan-glow: rgba(6, 182, 212, 0.4);
+  --accent-purple: #A855F7;
+  
+  /* Layout & Geometry */
+  --card-radius: 16px;
+  --btn-radius: 10px;
+  --glass-blur: blur(12px);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.37);
+  --shadow-glow-good: 0 0 25px rgba(34, 197, 94, 0.35);
+  --shadow-glow-warning: 0 0 35px rgba(239, 68, 68, 0.5);
+  --shadow-glow-analyzing: 0 0 25px rgba(245, 158, 11, 0.35);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Keyframe Animations */
+@keyframes pulseAlert {
+  0% {
+    box-shadow: inset 0 0 0px rgba(239, 68, 68, 0);
+  }
+  50% {
+    box-shadow: inset 0 0 60px rgba(239, 68, 68, 0.85), 0 0 40px rgba(239, 68, 68, 0.6);
+  }
+  100% {
+    box-shadow: inset 0 0 0px rgba(239, 68, 68, 0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes slideDownModal {
+  from {
+    transform: translateX(-50%) translateY(-150%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
