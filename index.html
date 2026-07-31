@@ -39,54 +39,6 @@
   </div>
 
   <!-- Component Initialization & Integration Script -->
-  <script type="module">
-    import { HeaderComponent } from './js/components/HeaderComponent.js';
-    import { WebcamComponent } from './js/components/WebcamComponent.js';
-    import { StatusComponent } from './js/components/StatusComponent.js';
-    import { SliderComponent } from './js/components/SliderComponent.js';
-    import { SerialComponent } from './js/components/SerialComponent.js';
-    import { AlertModalComponent } from './js/components/AlertModalComponent.js';
-
-    // Initialize UI Components
-    const headerComp = new HeaderComponent('header-container');
-    const statusComp = new StatusComponent('status-container');
-    const alertModalComp = new AlertModalComponent('alert-modal-container');
-
-    const sliderComp = new SliderComponent('slider-container', 15, (newThreshold) => {
-      console.log('임계값 변경됨:', newThreshold);
-    });
-
-    const webcamComp = new WebcamComponent(
-      'webcam-container',
-      () => {
-        console.log('카메라 시작 버튼 클릭');
-        webcamComp.setCameraState(true);
-        statusComp.updateStatus('analyzing', '자세 분석 중...');
-      },
-      () => {
-        console.log('카메라 종료 버튼 클릭');
-        webcamComp.setCameraState(false);
-        statusComp.updateStatus('inactive', '미감지 / 웹캠 종료');
-        alertModalComp.hideAlert();
-      }
-    );
-
-    const serialComp = new SerialComponent(
-      'serial-container',
-      () => {
-        console.log('아두이노 연결 요청');
-        // Simulated connection test for components
-        serialComp.setConnectionState(true, 'COM3');
-        headerComp.updateSerialStatus(true, 'COM3');
-      },
-      () => {
-        console.log('아두이노 연결 해제 요청');
-        serialComp.setConnectionState(false);
-        headerComp.updateSerialStatus(false);
-      }
-    );
-
-    console.log('모든 posture-coach UI 컴포넌트가 성공적으로 로드되었습니다.');
-  </script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>

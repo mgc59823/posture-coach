@@ -20,6 +20,10 @@ export class WebcamComponent {
       <div class="video-wrapper">
         <video id="webcam-video" playsinline autocomplete="off"></video>
         <canvas id="output-canvas"></canvas>
+        <div class="video-placeholder" id="video-placeholder">
+          <span style="font-size: 48px; opacity: 0.7;">📷</span>
+          <p style="color: var(--text-secondary); font-size: 14px; margin-top: 12px;">'카메라 시작' 버튼을 클릭하면 웹캠 및 자세 분석이 활성화됩니다.</p>
+        </div>
         <div class="overlay-info-badge" id="angle-overlay-badge" style="display: none;">
           <span>📐</span> <span id="overlay-angle-text">각도: 0°</span>
         </div>
@@ -37,6 +41,7 @@ export class WebcamComponent {
     this.videoElement = document.getElementById('webcam-video');
     this.canvasElement = document.getElementById('output-canvas');
     this.canvasCtx = this.canvasElement.getContext('2d');
+    this.placeholder = document.getElementById('video-placeholder');
     this.angleBadge = document.getElementById('angle-overlay-badge');
     this.angleText = document.getElementById('overlay-angle-text');
     this.btnStart = document.getElementById('btn-start-cam');
@@ -55,7 +60,10 @@ export class WebcamComponent {
     this.isCameraActive = active;
     this.btnStart.disabled = active;
     this.btnStop.disabled = !active;
-    if (!active) {
+    if (active) {
+      this.placeholder.style.display = 'none';
+    } else {
+      this.placeholder.style.display = 'flex';
       this.angleBadge.style.display = 'none';
       this.clearCanvas();
     }
